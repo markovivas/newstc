@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewSTC - Layout Dividido</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Sistema de cores renovado */
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --primary-light: #93c5fd;
+            --secondary: #475569;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #3b82f6;
+            
+            /* Escala de cinza refinada */
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            
+            /* Tipografia */
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-heading: 'Plus Jakarta Sans', var(--font-sans);
+            
+            /* Espaçamento */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            --spacing-3xl: 4rem;
+            
+            /* Border Radius */
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            
+            /* Sombras */
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            /* Transições */
+            --transition-base: all 0.3s ease;
+            --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--gray-700);
+            background-color: var(--gray-50);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition-base);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-md);
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.75rem; }
+        h4 { font-size: 1.5rem; }
+        h5 { font-size: 1.25rem; }
+        h6 { font-size: 1.125rem; }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        /* Header Styles */
+        .site-header {
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-bar {
+            background: var(--gray-800);
+            color: var(--white);
+            padding: var(--spacing-sm) 0;
+            font-size: 0.875rem;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar-contact {
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+
+        .top-bar-contact a {
+            color: var(--gray-300);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .top-bar-contact a:hover {
+            color: var(--white);
+        }
+
+        .main-header {
+            padding: var(--spacing-md) 0;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-branding {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .site-logo {
+            height: 50px;
+        }
+
+        .site-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin: 0;
+        }
+
+        .site-description {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin: 0;
+        }
+
+        /* Navigation */
+        .main-navigation {
+            display: flex;
+            align-items: center;
+        }
+
+        .primary-menu {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-xl);
+            margin: 0;
+        }
+
+        .primary-menu a {
+            color: var(--gray-700);
+            font-weight: 500;
+            padding: var(--spacing-sm) 0;
+            position: relative;
+        }
+
+        .primary-menu a:hover {
+            color: var(--primary);
+        }
+
+        .primary-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition-base);
+        }
+
+        .primary-menu a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray-700);
+            cursor: pointer;
+        }
+
+        /* Quick Access Buttons */
+        .quick-access-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-md);
+            margin: var(--spacing-xl) 0;
+        }
+
+        .quick-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-lg);
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            transition: var(--transition-base);
+        }
+
+        .quick-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .quick-btn i {
+            font-size: 2rem;
+            margin-bottom: var(--spacing-sm);
+            color: var(--primary);
+        }
+
+        .quick-btn span {
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: var(--spacing-3xl) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwIDEwMCIgcHJlc2VydmVBc3Bl3d0gcmF0aW89Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAwMCBMMTAwLDAgTDEwMCwxMDAgTDAwLDEwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvc3ZnPg==');
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: var(--spacing-lg);
+            color: var(--white);
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-xl);
+            opacity: 0.9;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.875rem 1.75rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-base);
+            gap: var(--spacing-sm);
+            line-height: 1;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-white {
+            background-color: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-white:hover {
+            background-color: var(--gray-100);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Featured News Section with Two Columns */
+        .featured-news {
+            padding: var(--spacing-3xl) 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            position: relative;
+            padding-bottom: var(--spacing-md);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .featured-news-container {
+            display: flex;
+            gap: var(--spacing-xl);
+        }
+
+        .news-column {
+            flex: 1;
+        }
+
+        .news-main {
+            flex: 0 0 60%;
+        }
+
+        .sidebar {
+            flex: 0 0 40%;
+        }
+
+        .featured-news-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xl);
+        }
+
+        .featured-news-item {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
+        }
+
+        .featured-news-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .featured-thumbnail {
+            position: relative;
+            padding-top: 56.25%;
+            overflow: hidden;
+        }
+
+        .featured-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .featured-news-item:hover .featured-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .featured-content {
+            padding: var(--spacing-xl);
+        }
+
+        .featured-header {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .featured-title {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .featured-title a {
+            color: var(--gray-900);
+        }
+
+        .featured-title a:hover {
+            color: var(--primary);
+        }
+
+        .post-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        .post-meta span {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .featured-excerpt {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* Sidebar Styles */
+        .sidebar-widget {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        .widget-title {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-lg);
+            color: var(--gray-800);
+            position: relative;
+            padding-bottom: var(--spacing-sm);
+        }
+
+        .widget-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Calendar Widget */
+        .calendar-widget {
+            text-align: center;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .calendar-nav {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+            color: var(--gray-600);
+            transition: var(--transition-base);
+        }
+
+        .calendar-nav:hover {
+            color: var(--primary);
+        }
+
+        .calendar-month {
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: var(--spacing-xs);
+        }
+
+        .calendar-day-header {
+            font-weight: 600;
+            color: var(--gray-600);
+            font-size: 0.875rem;
+            padding: var(--spacing-sm);
+        }
+
+        .calendar-day {
+            padding: var(--spacing-sm);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition-base);
+        }
+
+        .calendar-day:hover {
+            background: var(--primary-light);
+        }
+
+        .calendar-day.current {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .calendar-day.other-month {
+            color: var(--gray-400);
+        }
+
+        .calendar-day.event-day {
+            position: relative;
+        }
+
+        .calendar-day.event-day::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .calendar-day.event-day.current::after {
+            background: var(--white);
+        }
+
+        /* Events Widget */
+        .events-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .event-item {
+            display: flex;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            transition: var(--transition-base);
+        }
+
+        .event-item:hover {
+            background: var(--gray-100);
+            transform: translateX(5px);
+        }
+
+        .event-date {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 60px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-sm);
+        }
+
+        .event-day {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .event-month {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+        }
+
+        .event-details {
+            flex: 1;
+        }
+
+        .event-title {
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--gray-800);
+        }
+
+        .event-time {
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        /* Latest News */
+        .latest-news {
+            padding: var(--spacing-3xl) 0;
+            background: var(--gray-50);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .news-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-base);
+        }
+
+        .news-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .news-thumbnail {
+            position: relative;
+            padding-top: 56.25%;
+            overflow: hidden;
+        }
+
+        .news-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .news-card:hover .news-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .news-content {
+            padding: var(--spacing-lg);
+        }
+
+        .news-header {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .news-title {
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .news-title a {
+            color: var(--gray-900);
+        }
+
+        .news-title a:hover {
+            color: var(--primary);
+        }
+
+        .news-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .news-meta span {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .news-excerpt {
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .view-all {
+            text-align: center;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: var(--gray-800);
+            color: var(--gray-300);
+        }
+
+        .footer-widgets {
+            padding: var(--spacing-3xl) 0;
+        }
+
+        .footer-widget-area {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-xl);
+        }
+
+        .footer-widget {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .footer-widget .widget-title {
+            color: var(--white);
+            font-size: 1.25rem;
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+            padding-bottom: var(--spacing-sm);
+        }
+
+        .footer-widget .widget-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .site-info {
+            background: var(--gray-900);
+            padding: var(--spacing-xl) 0;
+            border-top: 1px solid var(--gray-700);
+        }
+
+        .site-info .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            font-size: 0.875rem;
+        }
+
+        .footer-menu {
+            display: flex;
+            gap: var(--spacing-xl);
+        }
+
+        .footer-menu a {
+            color: var(--gray-400);
+            font-size: 0.875rem;
+        }
+
+        .footer-menu a:hover {
+            color: var(--white);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--gray-700);
+            color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition-base);
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .quick-access-buttons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .featured-news-container {
+                flex-direction: column;
+            }
+            
+            .news-main, .sidebar {
+                flex: 1 1 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .primary-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                padding: var(--spacing-2xl);
+                box-shadow: var(--shadow-xl);
+                transition: var(--transition-base);
+                z-index: 1000;
+            }
+            
+            .primary-menu.active {
+                right: 0;
+            }
+            
+            .featured-news-grid,
+            .news-grid,
+            .footer-widget-area {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .site-info .container {
+                flex-direction: column;
+                gap: var(--spacing-md);
+                text-align: center;
+            }
+            
+            .footer-menu {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+            
+            .quick-access-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-cta {
+                flex-direction: column;
+            }
+            
+            .top-bar .container {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+            
+            .top-bar-contact {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-contact">
+                    <a href="tel:+551199999999"><i class="fas fa-phone"></i> (11) 9999-9999</a>
+                    <a href="mailto:contato@newstc.com"><i class="fas fa-envelope"></i> contato@newstc.com</a>
+                </div>
+                <div class="top-bar-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-header">
+            <div class="container">
+                <div class="site-branding">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMTUwIDUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0zMCAxMEg0MFY0MEgzMFYxMFoiIGZpbGw9IiMyNTYzZWIiLz48cGF0aCBkPSJNNjAgMTBINzBWNDBINjBWMTBaIiBmaWxsPSIjMjU2M2ViIi8+PHBhdGggZD0iTTQ1IDI1SDU1VjM1SDQ1VjI1WiIgZmlsbD0iIzI1NjNlYiIvPjxwYXRoIGQ9Ik03NSAxMEg4NVY0MEg3NVYxMFoiIGZpbGw9IiMyNTYzZWIiLz48cGF0aCBkPSJNMTA1IDEwSDEzNVYyMEgxMDVWMTBaIiBmaWxsPSIjMjU2M2ViIi8+PHBhdGggZD0iTTEwNSAyNUgxMzVWMzVIMTA1VjI1WiIgZmlsbD0iIzI1NjNlYiIvPjxwYXRoIGQ9Ik05MCAxMEgxMDBWNDBIOTBWMTBaIiBmaWxsPSIjMWU0MGFmIi8+PC9zdmc+" alt="NewSTC Logo" class="site-logo">
+                    <div>
+                        <h1 class="site-title">NewSTC</h1>
+                        <p class="site-description">Notícias Corporativas</p>
+                    </div>
+                </div>
+                
+                <nav class="main-navigation">
+                    <button class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul class="primary-menu">
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#">Notícias</a></li>
+                        <li><a href="#">Sobre</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Quick Access Buttons -->
+        <section class="container">
+            <div class="quick-access-buttons">
+                <a href="#" class="quick-btn">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Últimas Notícias</span>
+                </a>
+                <a href="#" class="quick-btn">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>Contato</span>
+                </a>
+                <a href="#" class="quick-btn">
+                    <i class="fas fa-building"></i>
+                    <span>Sobre Nós</span>
+                </a>
+                <a href="#" class="quick-btn">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Eventos</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Notícias Corporativas</h1>
+                    <p>Mantenha-se atualizado com as últimas notícias e informações da empresa</p>
+                    <div class="hero-cta">
+                        <a href="#" class="btn btn-white">Ver Notícias</a>
+                        <a href="#" class="btn btn-secondary">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured News with Two Columns -->
+        <section class="featured-news">
+            <div class="container">
+                <h2 class="section-title">Notícias em Destaque</h2>
+                <div class="featured-news-container">
+                    <!-- Left Column - 60% for Featured News -->
+                    <div class="news-column news-main">
+                        <div class="featured-news-grid">
+                            <!-- Featured News Item 1 -->
+                            <article class="featured-news-item animate-on-scroll">
+                                <div class="featured-thumbnail">
+                                    <img src="https://picsum.photos/600/400?random=1" alt="Featured News">
+                                </div>
+                                <div class="featured-content">
+                                    <header class="featured-header">
+                                        <h3 class="featured-title"><a href="#">Lançamento do novo produto revoluciona o mercado</a></h3>
+                                        <div class="post-meta">
+                                            <span><i class="far fa-calendar"></i> 15 Nov, 2023</span>
+                                            <span><i class="far fa-user"></i> Admin</span>
+                                        </div>
+                                    </header>
+                                    <div class="featured-excerpt">
+                                        <p>Nossa empresa acaba de lançar uma solução inovadora que promete transformar o setor com tecnologia de ponta e design diferenciado.</p>
+                                    </div>
+                                    <footer class="featured-footer">
+                                        <a href="#" class="btn btn-primary">Leia mais</a>
+                                    </footer>
+                                </div>
+                            </article>
+
+                            <!-- Featured News Item 2 -->
+                            <article class="featured-news-item animate-on-scroll">
+                                <div class="featured-thumbnail">
+                                    <img src="https://picsum.photos/600/400?random=2" alt="Featured News">
+                                </div>
+                                <div class="featured-content">
+                                    <header class="featured-header">
+                                        <h3 class="featured-title"><a href="#">Empresa anuncia expansão para novos mercados</a></h3>
+                                        <div class="post-meta">
+                                            <span><i class="far fa-calendar"></i> 10 Nov, 2023</span>
+                                            <span><i class="far fa-user"></i> Admin</span>
+                                        </div>
+                                    </header>
+                                    <div class="featured-excerpt">
+                                        <p>Com planos ambiciosos de crescimento, nossa empresa está se expandindo para três novos países no próximo trimestre.</p>
+                                    </div>
+                                    <footer class="featured-footer">
+                                        <a href="#" class="btn btn-primary">Leia mais</a>
+                                    </footer>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Right Column - 40% for Calendar and Events -->
+                    <div class="news-column sidebar">
+                        <!-- Calendar Widget -->
+                        <div class="sidebar-widget calendar-widget">
+                            <h3 class="widget-title">Calendário</h3>
+                            <!-- Shortcode replacement: [mostra-calendario-widget] -->
+                            <div class="calendar-container">
+                                <div class="calendar-header">
+                                    <button class="calendar-nav prev"><i class="fas fa-chevron-left"></i></button>
+                                    <div class="calendar-month">Novembro 2023</div>
+                                    <button class="calendar-nav next"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                                <div class="calendar-grid">
+                                    <div class="calendar-day-header">Dom</div>
+                                    <div class="calendar-day-header">Seg</div>
+                                    <div class="calendar-day-header">Ter</div>
+                                    <div class="calendar-day-header">Qua</div>
+                                    <div class="calendar-day-header">Qui</div>
+                                    <div class="calendar-day-header">Sex</div>
+                                    <div class="calendar-day-header">Sáb</div>
+                                    
+                                    <!-- Calendar days -->
+                                    <div class="calendar-day other-month">29</div>
+                                    <div class="calendar-day other-month">30</div>
+                                    <div class="calendar-day other-month">31</div>
+                                    <div class="calendar-day">1</div>
+                                    <div class="calendar-day">2</div>
+                                    <div class="calendar-day">3</div>
+                                    <div class="calendar-day">4</div>
+                                    <div class="calendar-day">5</div>
+                                    <div class="calendar-day">6</div>
+                                    <div class="calendar-day">7</div>
+                                    <div class="calendar-day event-day">8</div>
+                                    <div class="calendar-day">9</div>
+                                    <div class="calendar-day event-day">10</div>
+                                    <div class="calendar-day">11</div>
+                                    <div class="calendar-day">12</div>
+                                    <div class="calendar-day">13</div>
+                                    <div class="calendar-day">14</div>
+                                    <div class="calendar-day event-day">15</div>
+                                    <div class="calendar-day">16</div>
+                                    <div class="calendar-day">17</div>
+                                    <div class="calendar-day">18</div>
+                                    <div class="calendar-day">19</div>
+                                    <div class="calendar-day">20</div>
+                                    <div class="calendar-day event-day">21</div>
+                                    <div class="calendar-day">22</div>
+                                    <div class="calendar-day current">23</div>
+                                    <div class="calendar-day">24</div>
+                                    <div class="calendar-day">25</div>
+                                    <div class="calendar-day">26</div>
+                                    <div class="calendar-day">27</div>
+                                    <div class="calendar-day event-day">28</div>
+                                    <div class="calendar-day">29</div>
+                                    <div class="calendar-day">30</div>
+                                    <div class="calendar-day other-month">1</div>
+                                    <div class="calendar-day other-month">2</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Events Widget -->
+                        <div class="sidebar-widget events-widget">
+                            <h3 class="widget-title">Próximos Eventos</h3>
+                            <!-- Shortcode replacement: [mostra-prox-eventos] -->
+                            <div class="events-list">
+                                <div class="event-item">
+                                    <div class="event-date">
+                                        <span class="event-day">28</span>
+                                        <span class="event-month">Nov</span>
+                                    </div>
+                                    <div class="event-details">
+                                        <h4 class="event-title">Conferência Anual</h4>
+                                        <div class="event-time">
+                                            <i class="far fa-clock"></i> 14:00 - 18:00
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="event-item">
+                                    <div class="event-date">
+                                        <span class="event-day">05</span>
+                                        <span class="event-month">Dez</span>
+                                    </div>
+                                    <div class="event-details">
+                                        <h4 class="event-title">Workshop de Inovação</h4>
+                                        <div class="event-time">
+                                            <i class="far fa-clock"></i> 09:00 - 12:00
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="event-item">
+                                    <div class="event-date">
+                                        <span class="event-day">15</span>
+                                        <span class="event-month">Dez</span>
+                                    </div>
+                                    <div class="event-details">
+                                        <h4 class="event-title">Festa de Final de Ano</h4>
+                                        <div class="event-time">
+                                            <i class="far fa-clock"></i> 19:00 - 23:00
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest News -->
+        <section class="latest-news">
+            <div class="container">
+                <h2 class="section-title">Últimas Notícias</h2>
+                <div class="news-grid">
+                    <!-- News Item 1 -->
+                    <article class="news-card animate-on-scroll">
+                        <div class="news-thumbnail">
+                            <img src="https://picsum.photos/400/300?random=4" alt="News">
+                        </div>
+                        <div class="news-content">
+                            <header class="news-header">
+                                <h3 class="news-title"><a href="#">Empresa recebe prêmio de sustentabilidade</a></h3>
+                                <div class="news-meta">
+                                    <span><i class="far fa-calendar"></i> 3 Nov, 2023</span>
+                                    <span><i class="far fa-user"></i> Admin</span>
+                                </div>
+                            </header>
+                            <div class="news-excerpt">
+                                <p>Reconhecimento pelas práticas ambientais inovadoras implementadas em todos os nossos processos.</p>
+                            </div>
+                            <footer class="news-footer">
+                                <a href="#" class="btn btn-primary">Leia mais</a>
+                            </footer>
+                        </div>
+                    </article>
+
+                    <!-- News Item 2 -->
+                    <article class="news-card animate-on-scroll">
+                        <div class="news-thumbnail">
+                            <img src="https://picsum.photos/400/300?random=5" alt="News">
+                        </div>
+                        <div class="news-content">
+                            <header class="news-header">
+                                <h3 class="news-title"><a href="#">Nova parceria estratégica é anunciada</a></h3>
+                                <div class="news-meta">
+                                    <span><i class="far fa-calendar"></i> 28 Out, 2023</span>
+                                    <span><i class="far fa-user"></i> Admin</span>
+                                </div>
+                            </header>
+                            <div class="news-excerpt">
+                                <p>Colaboração com líder do setor permitirá expandir nossa atuação e oferecer soluções mais completas.</p>
+                            </div>
+                            <footer class="news-footer">
+                                <a href="#" class="btn btn-primary">Leia mais</a>
+                            </footer>
+                        </div>
+                    </article>
+
+                    <!-- News Item 3 -->
+                    <article class="news-card animate-on-scroll">
+                        <div class="news-thumbnail">
+                            <img src="https://picsum.photos/400/300?random=6" alt="News">
+                        </div>
+                        <div class="news-content">
+                            <header class="news-header">
+                                <h3 class="news-title"><a href="#">Relatório trimestral supera expectativas</a></h3>
+                                <div class="news-meta">
+                                    <span><i class="far fa-calendar"></i> 22 Out, 2023</span>
+                                    <span><i class="far fa-user"></i> Admin</span>
+                                </div>
+                            </header>
+                            <div class="news-excerpt">
+                                <p>Resultados financeiros do último trimestre mostram crescimento sólido e perspectivas positivas.</p>
+                            </div>
+                            <footer class="news-footer">
+                                <a href="#" class="btn btn-primary">Leia mais</a>
+                            </footer>
+                        </div>
+                    </article>
+                </div>
+                <div class="view-all">
+                    <a href="#" class="btn btn-primary">Ver todas as notícias</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-widgets">
+            <div class="container">
+                <div class="footer-widget-area">
+                    <div class="footer-widget">
+                        <h3 class="widget-title">Sobre Nós</h3>
+                        <p>NewSTC é o portal de notícias corporativas da empresa, trazendo as últimas atualizações, eventos e informações relevantes para colaboradores, clientes e parceiros.</p>
+                        <div class="footer-social">
+                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-widget">
+                        <h3 class="widget-title">Links Rápidos</h3>
+                        <ul class="footer-menu">
+                            <li><a href="#">Início</a></li>
+                            <li><a href="#">Notícias</a></li>
+                            <li><a href="#">Sobre</a></li>
+                            <li><a href="#">Contato</a></li>
+                            <li><a href="#">Política de Privacidade</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-widget">
+                        <h3 class="widget-title">Contato</h3>
+                        <address>
+                            <p><i class="fas fa-map-marker-alt"></i> Av. Paulista, 1000 - São Paulo, SP</p>
+                            <p><i class="fas fa-phone"></i> (11) 9999-9999</p>
+                            <p><i class="fas fa-envelope"></i> contato@newstc.com</p>
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="site-info">
+            <div class="container">
+                <div class="copyright">
+                    <p>&copy; 2023 NewSTC - Todos os direitos reservados.</p>
+                </div>
+                <div class="footer-menu">
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Mapa do Site</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.primary-menu').classList.toggle('active');
+        });
+
+        // Calendar navigation
+        document.querySelectorAll('.calendar-nav').forEach(button => {
+            button.addEventListener('click', function() {
+                // Logic for calendar navigation would go here
+                alert('Funcionalidade de navegação do calendário seria implementada aqui');
+            });
+        });
+
+        // Animações ao scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('animate-in');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
