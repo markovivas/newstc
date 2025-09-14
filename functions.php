@@ -96,6 +96,76 @@ function newstc_scripts() {
 }
 add_action('wp_enqueue_scripts', 'newstc_scripts');
 
+/**
+ * Adiciona opções ao Personalizador do WordPress.
+ */
+function newstc_customize_register( $wp_customize ) {
+    // Seção Hero
+    $wp_customize->add_section('newstc_hero_section', array(
+        'title' => __('Seção Hero', 'newstc'),
+        'description' => __('Opções para a seção Hero na página inicial.', 'newstc'),
+        'priority' => 30,
+    ));
+
+    // Título
+    $wp_customize->add_setting('hero_title', ['default' => __('Notícias Corporativas', 'newstc'), 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'postMessage']);
+    $wp_customize->add_control('hero_title', ['label' => __('Título', 'newstc'), 'section' => 'newstc_hero_section', 'type' => 'text']);
+
+    // Descrição
+    $wp_customize->add_setting('hero_description', ['default' => __('Mantenha-se atualizado com as últimas notícias e informações da empresa', 'newstc'), 'sanitize_callback' => 'wp_kses_post', 'transport' => 'postMessage']);
+    $wp_customize->add_control('hero_description', ['label' => __('Descrição', 'newstc'), 'section' => 'newstc_hero_section', 'type' => 'textarea']);
+
+    // Imagem de Fundo
+    $wp_customize->add_setting('hero_background_image', ['default' => '', 'sanitize_callback' => 'esc_url_raw']);
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'hero_background_image', ['label' => __('Imagem de Fundo', 'newstc'), 'section' => 'newstc_hero_section']));
+
+    // Texto do Botão Primário
+    $wp_customize->add_setting('hero_button_primary_text', ['default' => __('Ver Notícias', 'newstc'), 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'postMessage']);
+    $wp_customize->add_control('hero_button_primary_text', ['label' => __('Texto do Botão Primário', 'newstc'), 'section' => 'newstc_hero_section', 'type' => 'text']);
+
+    // Link do Botão Primário
+    $wp_customize->add_setting('hero_button_primary_link', ['default' => '#', 'sanitize_callback' => 'esc_url_raw']);
+    $wp_customize->add_control('hero_button_primary_link', ['label' => __('Link do Botão Primário', 'newstc'), 'section' => 'newstc_hero_section', 'type' => 'url']);
+
+    // Texto do Botão Secundário
+    $wp_customize->add_setting('hero_button_secondary_text', ['default' => __('Saiba Mais', 'newstc'), 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'postMessage']);
+    $wp_customize->add_control('hero_button_secondary_text', ['label' => __('Texto do Botão Secundário', 'newstc'), 'section' => 'newstc_hero_section', 'type' => 'text']);
+
+    // Link do Botão Secundário
+    $wp_customize->add_setting('hero_button_secondary_link', ['default' => '#', 'sanitize_callback' => 'esc_url_raw']);
+    $wp_customize->add_control('hero_button_secondary_link', ['label' => __('Link do Botão Secundário', 'newstc'), 'section' => 'newstc_hero_section', 'type' => 'url']);
+
+    // Habilitar Live Preview
+    $wp_customize->get_setting('hero_title')->transport = 'postMessage';
+    $wp_customize->get_setting('hero_description')->transport = 'postMessage';
+    $wp_customize->get_setting('hero_button_primary_text')->transport = 'postMessage';
+    $wp_customize->get_setting('hero_button_secondary_text')->transport = 'postMessage';
+
+    $wp_customize->selective_refresh->add_partial('hero_title', [
+        'selector' => '.hero-content h1',
+        'render_callback' => function() { return get_theme_mod('hero_title'); },
+    ]);
+    $wp_customize->selective_refresh->add_partial('hero_description', [
+        'selector' => '.hero-content p',
+        'render_callback' => function() { return get_theme_mod('hero_description'); },
+    ]);
+}
+add_action('customize_register', 'newstc_customize_register');
+
+/**
+ * Enfileira script para o live preview do Customizer.
+ */
+function newstc_customizer_live_preview() {
+    wp_enqueue_script(
+        'newstc-customizer',
+        get_template_directory_uri() . '/assets/js/customizer.js',
+        array('jquery', 'customize-preview'),
+        NEWSTC_VERSION,
+        true
+    );
+}
+add_action('customize_preview_init', 'newstc_customizer_live_preview');
+
 // Registrar áreas de widgets
 function newstc_widgets_init() {
     register_sidebar(array(

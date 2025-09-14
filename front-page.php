@@ -9,17 +9,27 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
-    <section class="hero-section">
+    <?php
+    $hero_bg_image = get_theme_mod('hero_background_image');
+    $hero_style = '';
+    if ($hero_bg_image) {
+        $hero_style = 'style="background-image: url(' . esc_url($hero_bg_image) . '); background-size: cover; background-position: center;"';
+    }
+    ?>
+    <section class="hero-section" <?php echo $hero_style; ?>>
+        <?php if ($hero_bg_image) : ?><div class="hero-overlay"></div><?php endif; ?>
         <div class="container">
             <div class="hero-content">
-                <h1><?php esc_html_e('Notícias Corporativas', 'newstc'); ?></h1>
-                <p><?php esc_html_e('Mantenha-se atualizado com as últimas notícias e informações da empresa', 'newstc'); ?></p>
+                <h1><?php echo esc_html(get_theme_mod('hero_title', __('Notícias Corporativas', 'newstc'))); ?></h1>
+                <p><?php echo wp_kses_post(get_theme_mod('hero_description', __('Mantenha-se atualizado com as últimas notícias e informações da empresa', 'newstc'))); ?></p>
                 <div class="hero-cta">
-                    <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="btn btn-white">
-                        <i class="fas fa-newspaper"></i> <?php esc_html_e('Ver Notícias', 'newstc'); ?>
+                    <a href="<?php echo esc_url(get_theme_mod('hero_button_primary_link', get_permalink(get_option('page_for_posts')))); ?>" class="btn btn-white">
+                        <i class="fas fa-newspaper"></i>
+                        <?php echo esc_html(get_theme_mod('hero_button_primary_text', __('Ver Notícias', 'newstc'))); ?>
                     </a>
-                    <a href="#" class="btn btn-secondary">
-                        <i class="fas fa-info-circle"></i> <?php esc_html_e('Saiba Mais', 'newstc'); ?>
+                    <a href="<?php echo esc_url(get_theme_mod('hero_button_secondary_link', '#')); ?>" class="btn btn-secondary">
+                        <i class="fas fa-info-circle"></i>
+                        <?php echo esc_html(get_theme_mod('hero_button_secondary_text', __('Saiba Mais', 'newstc'))); ?>
                     </a>
                 </div>
             </div>
