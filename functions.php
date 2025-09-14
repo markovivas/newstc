@@ -218,6 +218,7 @@ function newstc_social_share() {
         'twitter' => 'https://twitter.com/intent/tweet?text=' . $post_title . '&url=' . $post_url,
         'linkedin' => 'https://www.linkedin.com/shareArticle?mini=true&url=' . $post_url . '&title=' . $post_title,
         'whatsapp' => 'https://api.whatsapp.com/send?text=' . $post_title . ' ' . $post_url,
+        'instagram' => 'https://www.instagram.com', // O Instagram não tem URL de compartilhamento direto. Este link pode ser alterado para o perfil da empresa.
     ];
     
     echo '<div class="post-share">';

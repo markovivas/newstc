@@ -1055,8 +1055,10 @@ p {
 .share-btn.facebook { background: #1877F2; }
 .share-btn.twitter { background: #1DA1F2; }
 .share-btn.linkedin { background: #0A66C2; }
+.share-btn.instagram { background: #833AB4; } /* Cor roxa do Instagram */
 .share-btn.whatsapp { background: #25D366; }
 .share-btn.print-btn { background: var(--preto); }
+
 
 /* Post Navigation */
 .post-navigation-container {
@@ -1113,6 +1115,53 @@ p {
 .nav-title {
     font-weight: 600;
     color: var(--preto);
+}
+
+/*--------------------------------------------------------------
+# Pagination
+--------------------------------------------------------------*/
+.navigation.pagination {
+    margin-top: var(--spacing-2xl);
+    font-family: var(--font-heading);
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.nav-links .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 44px;
+    padding: 0 var(--spacing-sm);
+    border: 1px solid var(--cinza);
+    border-radius: var(--borda-radius);
+    background-color: var(--branco);
+    color: var(--azul-principal);
+    font-weight: 600;
+    transition: var(--transicao);
+    box-shadow: var(--sombra);
+}
+
+.nav-links .page-numbers:hover {
+    background-color: var(--azul-principal);
+    color: var(--branco);
+    border-color: var(--azul-principal);
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-hover);
+}
+
+.nav-links .page-numbers.current {
+    background-color: var(--azul-principal);
+    color: var(--branco);
+    border-color: var(--azul-principal);
+    cursor: default;
 }
 
 /* Responsividade */
