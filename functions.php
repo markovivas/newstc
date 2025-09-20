@@ -548,3 +548,51 @@ function newstc_save_quick_access_meta( $post_id ) {
     update_post_meta( $post_id, '_button_link', esc_url_raw( $_POST['button_link'] ?? '' ) );
 }
 add_action( 'save_post', 'newstc_save_quick_access_meta' );
+
+/**
+ * Configura as páginas padrão na ativação do tema.
+ * Cria as páginas 'Início' e 'Blog' e as define nas configurações de leitura.
+ */
+function newstc_setup_default_pages() {
+    // Verifica se a página 'Início' já existe
+    $home_page = get_page_by_title( 'Início' );
+
+    if ( ! $home_page ) {
+        $home_page_id = wp_insert_post( array(
+            'post_title'   => 'Início',
+            'post_content' => '<!-- wp:paragraph -->Esta é a sua página inicial. Edite-a para adicionar seu próprio conteúdo.<!-- /wp:paragraph -->',
+            'post_status'  => 'publish',
+            'post_author'  => 1,
+            'post_type'    => 'page',
+            'comment_status' => 'closed',
+            'ping_status'    => 'closed',
+        ) );
+    } else {
+        $home_page_id = $home_page->ID;
+    }
+
+    // Verifica se a página 'Blog' já existe
+    $blog_page = get_page_by_title( 'Blog' );
+
+    if ( ! $blog_page ) {
+        $blog_page_id = wp_insert_post( array(
+            'post_title'   => 'Blog',
+            'post_content' => '<!-- wp:paragraph -->Esta página exibirá suas últimas notícias.<!-- /wp:paragraph -->',
+            'post_status'  => 'publish',
+            'post_author'  => 1,
+            'post_type'    => 'page',
+            'comment_status' => 'closed',
+            'ping_status'    => 'closed',
+        ) );
+    } else {
+        $blog_page_id = $blog_page->ID;
+    }
+
+    // Define as páginas nas configurações de Leitura do WordPress
+    if ( isset( $home_page_id ) && isset( $blog_page_id ) ) {
+        update_option( 'show_on_front', 'page' );
+        update_option( 'page_on_front', $home_page_id );
+        update_option( 'page_for_posts', $blog_page_id );
+    }
+}
+add_action( 'after_switch_theme', 'newstc_setup_default_pages' );

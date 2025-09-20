@@ -164,10 +164,7 @@ get_header();
                             <div class="news-content">
                                 <header class="news-header">
                                     <h3 class="news-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                                    <div class="news-meta">
-                                        <span class="news-date"><i class="far fa-calendar-alt"></i> <?php echo get_the_date(); ?></span>
-                                        <span class="news-author"><i class="far fa-user"></i> <?php the_author(); ?></span>
-                                    </div>
+                                    <?php newstc_post_meta(); ?>
                                 </header>
                                 <div class="news-excerpt">
                                     <?php the_excerpt(); ?>
