@@ -4,7 +4,7 @@
  *
  * Contém o fechamento do elemento #page e todo o conteúdo após isso.
  *
- * @package NewSTC
+ * @package TerraDoRei
  */
 
 ?>
@@ -37,7 +37,7 @@
         <div class="site-info">
             <div class="container">
                 <div class="copyright">
-                    &copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. <?php esc_html_e('Todos os direitos reservados.', 'newstc'); ?>
+                    &copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. <?php esc_html_e('Todos os direitos reservados.', 'terradorei'); ?>
                 </div>
                 
                 <div class="footer-menu">

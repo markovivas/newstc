@@ -2,7 +2,7 @@
 /**
  * Template para a página inicial
  *
- * @package NewSTC
+ * @package TerraDoRei
  */
 
 get_header();
@@ -20,16 +20,16 @@ get_header();
         <?php if ($hero_bg_image) : ?><div class="hero-overlay"></div><?php endif; ?>
         <div class="container">
             <div class="hero-content">
-                <h1><?php echo esc_html(get_theme_mod('hero_title', __('Notícias Corporativas', 'newstc'))); ?></h1>
-                <p><?php echo wp_kses_post(get_theme_mod('hero_description', __('Mantenha-se atualizado com as últimas notícias e informações da empresa', 'newstc'))); ?></p>
+                <h1><?php echo esc_html(get_theme_mod('hero_title', __('Notícias Corporativas', 'terradorei'))); ?></h1>
+                <p><?php echo wp_kses_post(get_theme_mod('hero_description', __('Mantenha-se atualizado com as últimas notícias e informações da empresa', 'terradorei'))); ?></p>
                 <div class="hero-cta">
                     <a href="<?php echo esc_url(get_theme_mod('hero_button_primary_link', get_permalink(get_option('page_for_posts')))); ?>" class="btn btn-white">
                         <i class="fas fa-newspaper"></i>
-                        <?php echo esc_html(get_theme_mod('hero_button_primary_text', __('Ver Notícias', 'newstc'))); ?>
+                        <?php echo esc_html(get_theme_mod('hero_button_primary_text', __('Ver Notícias', 'terradorei'))); ?>
                     </a>
                     <a href="<?php echo esc_url(get_theme_mod('hero_button_secondary_link', '#')); ?>" class="btn btn-secondary">
                         <i class="fas fa-info-circle"></i>
-                        <?php echo esc_html(get_theme_mod('hero_button_secondary_text', __('Saiba Mais', 'newstc'))); ?>
+                        <?php echo esc_html(get_theme_mod('hero_button_secondary_text', __('Saiba Mais', 'terradorei'))); ?>
                     </a>
                 </div>
             </div>
@@ -70,7 +70,7 @@ get_header();
     
     <section class="featured-news">
         <div class="container">
-            <h2 class="section-title"><?php esc_html_e('Notícias em Destaque', 'newstc'); ?></h2>
+            <h2 class="section-title"><?php esc_html_e('Notícias em Destaque', 'terradorei'); ?></h2>
             
             <div class="featured-news-container">
                 <div class="news-main">
@@ -94,18 +94,18 @@ get_header();
                                                 <?php the_post_thumbnail('large'); ?>
                                             </a>
                                         <?php endif; ?>
-                                        <div class="featured-badge"><?php esc_html_e('Destaque', 'newstc'); ?></div>
+                                        <div class="featured-badge"><?php esc_html_e('Destaque', 'terradorei'); ?></div>
                                     </div>
                                     <div class="featured-content">
                                         <header class="featured-header">
                                             <h3 class="featured-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                                            <?php newstc_post_meta(); ?>
+                                            <?php terradorei_post_meta(); ?>
                                         </header>
                                         <div class="featured-excerpt">
                                             <?php the_excerpt(); ?>
                                         </div>
                                         <footer class="featured-footer">
-                                            <a href="<?php the_permalink(); ?>" class="btn btn-primary"><?php esc_html_e('Leia mais', 'newstc'); ?></a>
+                                            <a href="<?php the_permalink(); ?>" class="btn btn-primary"><?php esc_html_e('Leia mais', 'terradorei'); ?></a>
                                         </footer>
                                     </div>
                                 </article>
@@ -114,7 +114,7 @@ get_header();
                             wp_reset_postdata();
                         else :
                             ?>
-                            <p><?php esc_html_e('Nenhuma notícia em destaque encontrada.', 'newstc'); ?></p>
+                            <p><?php esc_html_e('Nenhuma notícia em destaque encontrada.', 'terradorei'); ?></p>
                             <?php
                         endif;
                         ?>
@@ -140,7 +140,7 @@ get_header();
     
     <section class="latest-news">
         <div class="container">
-            <h2 class="section-title"><?php esc_html_e('Últimas Notícias', 'newstc'); ?></h2>
+            <h2 class="section-title"><?php esc_html_e('Últimas Notícias', 'terradorei'); ?></h2>
             <div class="news-grid">
                 <?php
                 $latest_args = array(
@@ -164,13 +164,13 @@ get_header();
                             <div class="news-content">
                                 <header class="news-header">
                                     <h3 class="news-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                                    <?php newstc_post_meta(); ?>
+                                    <?php terradorei_post_meta(); ?>
                                 </header>
                                 <div class="news-excerpt">
                                     <?php the_excerpt(); ?>
                                 </div>
                                 <footer class="news-footer">
-                                    <a href="<?php the_permalink(); ?>" class="btn btn-primary"><?php esc_html_e('Leia mais', 'newstc'); ?></a>
+                                    <a href="<?php the_permalink(); ?>" class="btn btn-primary"><?php esc_html_e('Leia mais', 'terradorei'); ?></a>
                                 </footer>
                             </div>
                         </article>
@@ -179,13 +179,13 @@ get_header();
                     wp_reset_postdata();
                 else :
                     ?>
-                    <p><?php esc_html_e('Nenhuma notícia encontrada.', 'newstc'); ?></p>
+                    <p><?php esc_html_e('Nenhuma notícia encontrada.', 'terradorei'); ?></p>
                     <?php
                 endif;
                 ?>
             </div>
             <div class="view-all">
-                <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="btn btn-primary"><?php esc_html_e('Ver todas as notícias', 'newstc'); ?></a>
+                <a href="<?php echo esc_url(get_permalink(get_option('page_for_posts'))); ?>" class="btn btn-primary"><?php esc_html_e('Ver todas as notícias', 'terradorei'); ?></a>
             </div>
         </div>
     </section>

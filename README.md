@@ -1,6 +1,6 @@
-# NewSTC - Tema WordPress para Notícias Corporativas
+# Terra do Rei - Tema WordPress para Notícias Corporativas
 
-`NewSTC` é um tema moderno, limpo e responsivo para WordPress, projetado especificamente para portais de notícias corporativas, intranets e sites de comunicação interna. Com um design focado na legibilidade e na experiência do usuário, o tema oferece funcionalidades avançadas para destacar conteúdo e facilitar o acesso à informação.
+`Terra do Rei` é um tema moderno, limpo e responsivo para WordPress, projetado especificamente para portais de notícias corporativas, intranets e sites de comunicação interna. Com um design focado na legibilidade e na experiência do usuário, o tema oferece funcionalidades avançadas para destacar conteúdo e facilitar o acesso à informação.
 
 **Versão:** 1.0
 **Autor:** Marco Antonio Vivas
@@ -37,7 +37,7 @@ Após ativar o tema, siga estes passos para configurar seu site.
 
 ### 1. Configurar a Página Inicial
 
-O tema `NewSTC` foi projetado para usar uma página inicial estática.
+O tema `Terra do Rei` foi projetado para usar uma página inicial estática.
 
 1.  Crie uma nova página em **Páginas > Adicionar nova** e dê a ela o título de "Início" (ou como preferir).
 2.  Crie outra página chamada "Blog" ou "Notícias" para ser a página de listagem dos posts.
@@ -79,6 +79,58 @@ Os botões de atalho na página inicial são gerenciados através de um tipo de 
 6.  Clique em **Publicar**.
 
 Você pode adicionar, editar ou remover quantos botões desejar.
+
+#### Sugestões de Botões
+
+Abaixo estão algumas sugestões de botões que podem ser criados para melhorar a experiência do usuário:
+
+**1. Últimas Notícias**
+*   **Título:** `Últimas Notícias`
+*   **Descrição (Conteúdo):** `Fique por dentro de todas as novidades e comunicados importantes da empresa.`
+*   **Ícone:** `fas fa-newspaper`
+*   **Link:** `/blog` (ou a URL da sua página de notícias)
+
+**2. Calendário de Eventos**
+*   **Título:** `Calendário de Eventos`
+*   **Descrição (Conteúdo):** `Não perca nenhum evento! Confira nossa agenda completa de workshops e confraternizações.`
+*   **Ícone:** `fas fa-calendar-alt`
+*   **Link:** `#calendar` (ou a URL da sua página de eventos)
+
+**3. Nossa Equipe**
+*   **Título:** `Nossa Equipe`
+*   **Descrição (Conteúdo):** `Conheça os talentos que fazem parte da nossa história e impulsionam nosso sucesso.`
+*   **Ícone:** `fas fa-users`
+*   **Link:** `/equipe` (ou a URL da sua página de equipe)
+
+**4. Quem Somos**
+*   **Título:** `Quem Somos`
+*   **Descrição (Conteúdo):** `Descubra nossa missão, visão e os valores que guiam cada passo do nosso projeto.`
+*   **Ícone:** `fas fa-info-circle`
+*   **Link:** `/sobre` (ou a URL da sua página "Sobre")
+
+**5. Fale Conosco**
+*   **Título:** `Fale Conosco`
+*   **Descrição (Conteúdo):** `Precisa de ajuda ou tem alguma dúvida? Entre em contato com nossos canais de atendimento.`
+*   **Ícone:** `fas fa-headset`
+*   **Link:** `/contato` (ou a URL da sua página de contato)
+
+**6. Documentos Importantes**
+*   **Título:** `Documentos Importantes`
+*   **Descrição (Conteúdo):** `Acesse rapidamente manuais, políticas internas e outros arquivos essenciais para o seu dia a dia.`
+*   **Ícone:** `fas fa-file-alt`
+*   **Link:** `/documentos` (ou a URL da sua biblioteca de arquivos)
+
+**7. Carreiras**
+*   **Título:** `Carreiras`
+*   **Descrição (Conteúdo):** `Quer fazer parte do nosso time? Confira as oportunidades abertas e venha crescer conosco.`
+*   **Ícone:** `fas fa-briefcase`
+*   **Link:** `/carreiras` (ou a URL da sua página de vagas)
+
+**8. Galeria de Fotos**
+*   **Título:** `Galeria de Fotos`
+*   **Descrição (Conteúdo):** `Relembre os melhores momentos dos nossos eventos, confraternizações e conquistas.`
+*   **Ícone:** `fas fa-images`
+*   **Link:** `/galeria` (ou a URL da sua galeria)
 
 ### 5. Widgets
 

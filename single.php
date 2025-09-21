@@ -2,7 +2,7 @@
 /**
  * O template para exibir todos os posts individuais
  *
- * @package NewSTC
+ * @package TerraDoRei
  */
 
 get_header();
@@ -18,7 +18,7 @@ get_header();
                 
                 <?php if ( has_post_thumbnail() ) : ?>
                     <div class="post-featured-image">
-                        <?php the_post_thumbnail('newstc-featured'); ?>
+                        <?php the_post_thumbnail('terradorei-featured'); ?>
                     </div>
                 <?php endif; ?>
 
@@ -31,7 +31,7 @@ get_header();
                         }
                         ?>
                         <h1 class="entry-title"><?php the_title(); ?></h1>
-                        <?php newstc_post_meta(); ?>
+                        <?php terradorei_post_meta(); ?>
                     </header><!-- .entry-header -->
 
                     <div class="entry-content">
@@ -44,12 +44,12 @@ get_header();
                         if (has_tag()) :
                             ?>
                             <div class="post-tags">
-                                <span class="tags-label"><?php esc_html_e('Tags:', 'newstc'); ?></span>
+                                <span class="tags-label"><?php esc_html_e('Tags:', 'terradorei'); ?></span>
                                 <?php the_tags('', '', ''); ?>
                             </div>
                         <?php endif; ?>
 
-                        <?php newstc_social_share(); ?>
+                        <?php terradorei_social_share(); ?>
                     </footer><!-- .entry-footer -->
                 </div>
             </article><!-- #post-<?php the_ID(); ?> -->
@@ -58,8 +58,8 @@ get_header();
                 <?php
                 the_post_navigation(
                     array(
-                        'prev_text' => '<span class="nav-subtitle"><i class="fas fa-arrow-left"></i> ' . esc_html__( 'Post Anterior', 'newstc' ) . '</span> <span class="nav-title">%title</span>',
-                        'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Próximo Post', 'newstc' ) . ' <i class="fas fa-arrow-right"></i></span> <span class="nav-title">%title</span>',
+                        'prev_text' => '<span class="nav-subtitle"><i class="fas fa-arrow-left"></i> ' . esc_html__( 'Post Anterior', 'terradorei' ) . '</span> <span class="nav-title">%title</span>',
+                        'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Próximo Post', 'terradorei' ) . ' <i class="fas fa-arrow-right"></i></span> <span class="nav-title">%title</span>',
                     )
                 );
                 ?>

@@ -5,7 +5,7 @@
  * Este é o template mais genérico no WordPress e um dos
  * dois arquivos obrigatórios para um tema (o outro é style.css).
  *
- * @package NewSTC
+ * @package TerraDoRei
  */
 
 get_header();
@@ -19,7 +19,7 @@ get_header();
                 if ( is_home() && ! is_front_page() ) :
                     single_post_title();
                 else :
-                    esc_html_e( 'Últimas Notícias', 'newstc' );
+                    esc_html_e( 'Últimas Notícias', 'terradorei' );
                 endif;
                 ?>
             </h1>
@@ -35,20 +35,20 @@ get_header();
                         <div class="news-thumbnail">
                             <?php if (has_post_thumbnail()) : ?>
                                 <a href="<?php the_permalink(); ?>">
-                                    <?php the_post_thumbnail('newstc-card'); ?>
+                                    <?php the_post_thumbnail('terradorei-card'); ?>
                                 </a>
                             <?php endif; ?>
                         </div>
                         <div class="news-content">
                             <header class="news-header">
                                 <h2 class="news-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                                <?php newstc_post_meta(); ?>
+                                <?php terradorei_post_meta(); ?>
                             </header>
                             <div class="news-excerpt">
                                 <?php the_excerpt(); ?>
                             </div>
                             <footer class="news-footer">
-                                <a href="<?php the_permalink(); ?>" class="btn btn-primary"><?php esc_html_e('Leia mais', 'newstc'); ?></a>
+                                <a href="<?php the_permalink(); ?>" class="btn btn-primary"><?php esc_html_e('Leia mais', 'terradorei'); ?></a>
                             </footer>
                         </div>
                     </article>
@@ -60,13 +60,13 @@ get_header();
             <?php
             the_posts_pagination(
                 array(
-                    'prev_text' => '<i class="fas fa-arrow-left"></i> ' . esc_html__( 'Anterior', 'newstc' ),
-                    'next_text' => esc_html__( 'Próximo', 'newstc' ) . ' <i class="fas fa-arrow-right"></i>',
+                    'prev_text' => '<i class="fas fa-arrow-left"></i> ' . esc_html__( 'Anterior', 'terradorei' ),
+                    'next_text' => esc_html__( 'Próximo', 'terradorei' ) . ' <i class="fas fa-arrow-right"></i>',
                 )
             );
         else :
             ?>
-            <p><?php esc_html_e('Nenhuma notícia encontrada.', 'newstc'); ?></p>
+            <p><?php esc_html_e('Nenhuma notícia encontrada.', 'terradorei'); ?></p>
             <?php
         endif;
         ?>

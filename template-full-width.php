@@ -5,7 +5,8 @@
  * Este é o template para páginas que precisam ocupar a largura total da tela,
  * sem o container padrão.
  *
- * @package NewSTC
+
+* @package TerraDoRei
  */
 
 get_header();

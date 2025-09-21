@@ -2,7 +2,7 @@
 /**
  * O template para exibir todas as páginas
  *
- * @package NewSTC
+ * @package TerraDoRei
  */
 
 get_header();
