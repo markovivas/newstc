@@ -56,13 +56,44 @@ get_header();
 
             <div class="post-navigation-container">
                 <?php
-                the_post_navigation(
-                    array(
-                        'prev_text' => '<span class="nav-subtitle"><i class="fas fa-arrow-left"></i> ' . esc_html__( 'Post Anterior', 'terradorei' ) . '</span> <span class="nav-title">%title</span>',
-                        'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Próximo Post', 'terradorei' ) . ' <i class="fas fa-arrow-right"></i></span> <span class="nav-title">%title</span>',
-                    )
-                );
+                $prev_post = get_previous_post();
+                $next_post = get_next_post();
                 ?>
+                <nav class="post-navigation">
+                    <div class="nav-links">
+                        <div class="nav-previous">
+                            <?php if ( ! empty( $prev_post ) ) : ?>
+                                <a href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>" rel="prev">
+                                    <div class="nav-thumbnail">
+                                        <?php echo get_the_post_thumbnail( $prev_post->ID, 'terradorei-thumbnail' ); ?>
+                                    </div>
+                                    <div class="nav-content">
+                                        <span class="nav-subtitle"><i class="fas fa-arrow-left"></i> <?php esc_html_e( 'Post Anterior', 'terradorei' ); ?></span>
+                                        <span class="nav-title"><?php echo esc_html( get_the_title( $prev_post->ID ) ); ?></span>
+                                    </div>
+                                </a>
+                            <?php else: ?>
+                                <div class="nav-placeholder"></div>
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="nav-next">
+                            <?php if ( ! empty( $next_post ) ) : ?>
+                                <a href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" rel="next">
+                                    <div class="nav-content">
+                                        <span class="nav-subtitle"><?php esc_html_e( 'Próximo Post', 'terradorei' ); ?> <i class="fas fa-arrow-right"></i></span>
+                                        <span class="nav-title"><?php echo esc_html( get_the_title( $next_post->ID ) ); ?></span>
+                                    </div>
+                                    <div class="nav-thumbnail">
+                                        <?php echo get_the_post_thumbnail( $next_post->ID, 'terradorei-thumbnail' ); ?>
+                                    </div>
+                                </a>
+                            <?php else: ?>
+                                <div class="nav-placeholder"></div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </nav>
             </div>
 
             <?php
