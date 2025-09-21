@@ -1075,7 +1075,7 @@ p {
 
 /* Post Navigation */
 .post-navigation-container {
-    max-width: 840px; /* Mesma largura do .post-content-area */
+    max-width: 100%; /* Mesma largura do .post-content-area */
     margin: 0 auto var(--spacing-2xl) auto;
 }
 
